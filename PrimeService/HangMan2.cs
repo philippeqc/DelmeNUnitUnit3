@@ -25,13 +25,15 @@ namespace PrimeService
             foreach (var letterGuess in guesses)
             {
                 if (-1 == secretWord.IndexOf(letterGuess))
+                {
                     badGuess++;
-                else 
+                    if (badGuess == badGuessLimit)
+                        return false;
+                }
+                else
                     remainingSecretLetters.Remove(letterGuess);
             }
 
-            if (badGuess > badGuessLimit)
-                return false;
             if(remainingSecretLetters.Count > 0)
                 return false;
             return true;

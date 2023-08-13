@@ -55,52 +55,34 @@ namespace PrimeService.Tests
     [TestFixture]
     public class HangManTest2
     {
-
         [Test]
         public void GuessingAllLettersCorrectlyInTheSecretWordIsASuccess()
         {
-            string secretWord = "love";
-            var hangMan = new PrimeService.HangMan2(secretWord);
-            var guesses = secretWord;
-            Assert.IsTrue(hangMan.CheckGuesses(guesses));
+            var hangMan = new PrimeService.HangMan2("love");
+            Assert.IsTrue(hangMan.CheckGuesses("love"));
         }
-
 
         [Test]
         public void MissingAnyLettersInTheSecretWordIsAFailure()
         {
-            string secretWord = "love";
-            var hangMan = new PrimeService.HangMan2(secretWord);
-            var guesses = "lov";
-            Assert.IsFalse(hangMan.CheckGuesses(guesses));
+            var hangMan = new PrimeService.HangMan2("love");
+            Assert.IsFalse(hangMan.CheckGuesses("lov"));
         }
 
         [Test]
-        public void GuessingAnAbsentLetterAndAllLettersCorrectlyInTheSecretWordIsASuccess()
+        public void GuessingTheSecretWordWithLessThanBadGuessLimitMistakeIsASuccess()
         {
-            string secretWord = "love";
-            var hangMan = new PrimeService.HangMan2(secretWord);
-            var guesses = "y" + secretWord;
-            Assert.IsTrue(hangMan.CheckGuesses(guesses));
+            var badGuesses = "xyz";
+            var hangMan = new PrimeService.HangMan2("love", badGuesses.Length + 1);
+            Assert.IsFalse(hangMan.CheckGuesses("lovexyz"));
         }
-
 
         [Test]
         public void MakingTooManyBadGuessIsAFailure()
         {
-            string secretWord = "love";
-            var hangMan = new PrimeService.HangMan2(secretWord, 3);
-            var guesses = "wxyz";
-            Assert.IsFalse(hangMan.CheckGuesses(guesses));
-        }
-
-        [Test]
-        public void MakingTooManyBadGuessIsAFailureEvenMixedWithAllTheGoodGuess()
-        {
-            string secretWord = "love";
-            var hangMan = new PrimeService.HangMan2(secretWord, 3);
-            var guesses = secretWord + "wxyz";
-            Assert.IsFalse(hangMan.CheckGuesses(guesses));
+            var badGuesses = "xyz";
+            var hangMan = new PrimeService.HangMan2("love", badGuesses.Length);
+            Assert.IsFalse(hangMan.CheckGuesses("lovexyz"));
         }
     }
 }
