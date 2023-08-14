@@ -26,9 +26,9 @@ namespace PrimeService
             {
                 if (-1 == secretWord.IndexOf(letterGuess))
                 {
-                    badGuess++;
                     if (badGuess == badGuessLimit)
                         return false;
+                    badGuess++;
                 }
                 else
                     remainingSecretLetters.Remove(letterGuess);

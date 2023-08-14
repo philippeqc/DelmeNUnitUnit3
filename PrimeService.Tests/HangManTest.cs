@@ -70,18 +70,18 @@ namespace PrimeService.Tests
         }
 
         [Test]
-        public void GuessingTheSecretWordWithLessThanBadGuessLimitMistakeIsASuccess()
-        {
-            var badGuesses = "xyz";
-            var hangMan = new PrimeService.HangMan2("love", badGuesses.Length + 1);
-            Assert.IsFalse(hangMan.CheckGuesses("lovexyz"));
-        }
-
-        [Test]
-        public void MakingTooManyBadGuessIsAFailure()
+        public void MakingUpToLimitMistakeIsASuccess()
         {
             var badGuesses = "xyz";
             var hangMan = new PrimeService.HangMan2("love", badGuesses.Length);
+            Assert.IsTrue(hangMan.CheckGuesses("lovexyz"));
+        }
+
+        [Test]
+        public void MakingMoreThanLimitMistakeIsAFailure()
+        {
+            var badGuesses = "xyz";
+            var hangMan = new PrimeService.HangMan2("love", badGuesses.Length - 1);
             Assert.IsFalse(hangMan.CheckGuesses("lovexyz"));
         }
     }
