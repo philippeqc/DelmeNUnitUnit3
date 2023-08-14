@@ -9,11 +9,11 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/PrimeService.Tests/bin/Debug/net5.0/PrimeService.Tests.dll",
+            "program": "${workspaceFolder}/bin/Debug/net7.0/HangManService.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/PrimeService.Tests",
-            "console": "internalConsole",
-            "stopAtEntry": false
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
         },
         {
             "name": ".NET Core Attach",

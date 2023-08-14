@@ -5,14 +5,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrimeService
+namespace HangManService
 {
-    public class HangMan2
+    public class HangMan
     {
         private string secretWord = "";
         private int badGuessLimit = 3;
 
-        public HangMan2(string secretWord, int badGuessLimit = 3)
+        public HangMan(string secretWord, int badGuessLimit = 3)
         {
             this.secretWord = secretWord;
             this.badGuessLimit = badGuessLimit;
